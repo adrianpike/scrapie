@@ -1,6 +1,42 @@
 = scrapie
 
-Description goes here.
+Hey, it's Scrapie! It's 2011, we should be able to scrape sites for their juicy data in a delicious fashion instead of having to hack something together every time.
+
+It's basically a tool that allows you to really simply and quickly fab up a class that translates CSS selectors into attributes, and lets you specify your own translations on query params.
+
+== Example
+
+  class Airplane < Scrapie
+    url 'http://registry.faa.gov/aircraftinquiry/NNum_Results.aspx'
+    params {
+      :n_number => 'NNumbertxt'
+    }
+    attributes {
+      'serial_number' => 'div#serial_number',
+      'classname' => '.class_name'
+    }
+    before_fetch do |agent|
+      # Do stuff with my agent, like log in or hax the gibson
+    end
+    after_fetch do |agent|
+      # Do more neatu stuff with my agent
+    end
+  
+  
+    # Other posisbilities
+    method :get
+    agent_options { :options_to_send_to_my_new_mechanize_agent => 'BE COOL MAN' }
+  end
+
+  a = Airplane.find(:n_number => '12345') # => Fetches http://registry.faa.gov/aircraftinquiry/NNum_Results.aspx?NNumbertxt=12345
+  a.serial_number = 'a cool serial number'
+
+== Todo
+
+* Set up the callbacks
+* Sanitize
+* Refactor
+* Make it cooler!
 
 == Contributing to scrapie
  

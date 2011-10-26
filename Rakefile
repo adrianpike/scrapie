@@ -17,19 +17,20 @@ Jeweler::Tasks.new do |gem|
   gem.name = "scrapie"
   gem.homepage = "http://github.com/adrianpike/scrapie"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Scrapie scrapes things for great justice.}
+  gem.description = %Q{Scrapie is a tool that allows you to really simply and quickly fab up a class that translates CSS selectors into attributes, and lets you specify your own translations on query params. }
   gem.email = "adrian@pikeapps.com"
   gem.authors = ["Adrian Pike"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
+
+require 'rspec'
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new('spec') do |t|
+  t.pattern = 'spec/*_spec.rb'
+#  t.rspec_opts = ["--backtrace"]
 end
 
 require 'rcov/rcovtask'

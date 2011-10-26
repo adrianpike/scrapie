@@ -32,7 +32,7 @@ class ParamsScrapie < Scrapie
   params({ :test_param => 'test_param_for_getting' })
   attributes({
     'param' => 'div#param',
-    'param_upcased' => 'div#param_upcased'
+    :param_upcased => 'div#param_upcased'
   })
 end
 

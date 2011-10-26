@@ -36,7 +36,7 @@ class Scrapie
     
     new_object = self.new
     @attributes.each {|name, page_selector|
-      new_object.send(name + '=', page.search(page_selector).inner_html)
+      new_object.send(name.to_s + '=', page.search(page_selector).inner_html)
     }
     
     new_object

@@ -8,13 +8,13 @@ It's basically a tool that allows you to really simply and quickly fab up a clas
 
   class Airplane < Scrapie
     url 'http://registry.faa.gov/aircraftinquiry/NNum_Results.aspx'
-    params {
+    params({
       :n_number => 'NNumbertxt'
-    }
-    attributes {
+    })
+    attributes({
       'serial_number' => 'div#serial_number',
       'classname' => '.class_name'
-    }
+    })
     before_fetch do |agent|
       # Do stuff with my agent, like log in or hax the gibson
     end
@@ -34,9 +34,9 @@ It's basically a tool that allows you to really simply and quickly fab up a clas
 == Todo
 
 * Set up the callbacks
+* Programmatically specify a valid record vs. invalid.
 * Sanitize
 * Refactor
-* Make it cooler!
 
 == Contributing to scrapie
  
